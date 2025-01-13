@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,7 +21,13 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String description;
+    private String brand;
     private int quantity;
     private BigDecimal price;
+    private String description;
+
+
+    private Category category;
+
+    private List<Image> images;
 }
