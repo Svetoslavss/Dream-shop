@@ -1,2 +1,4 @@
-package com.academy.dream_shop.models;public class Product {
+package com.academy.dream_shop.models;
+
+public class Product {
 }
