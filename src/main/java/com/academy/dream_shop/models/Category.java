@@ -1,8 +1,10 @@
 package com.academy.dream_shop.models;
 
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ public class Category {
     private Long id;
     private String name;
 
+    @OneToMany(mappedBy = "category")
     private List<Product> product;
 
 }
