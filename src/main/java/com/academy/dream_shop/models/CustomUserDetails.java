@@ -12,14 +12,18 @@ import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
 
-    private final UserInfo user;
-    private  List<GrantedAuthority> authorities;
+    private final String username;
+    private final String password;
+    private final List<GrantedAuthority> authorities;
 
     public CustomUserDetails(UserInfo user){
-        this.user = user;
-        this.authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE" + role))
-                .collect(Collectors.toList());
+       this.username = user.getUsername();
+       this.password = user.getPassword();
+       this.authorities = user.getRoles()
+               .stream()
+               .map(roles -> new SimpleGrantedAuthority(roles.name()))
+               .collect(Collectors.toList());
+
     }
 
     @Override
@@ -29,12 +33,12 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return username;
     }
 
     @Override
