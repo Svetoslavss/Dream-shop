@@ -3,17 +3,19 @@ package com.academy.dream_shop.services.product;
 import com.academy.dream_shop.exceptions.ProductNotFoundException;
 import com.academy.dream_shop.models.Product;
 import com.academy.dream_shop.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService implements IProductService {
 
     @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
 
     @Override
     public Product addProduct(Product product) {
@@ -71,6 +73,6 @@ public class ProductService implements IProductService {
 
     @Override
     public Long countProductsByBrandAndName(String brand, String name) {
-        return null;
+        return productRepository.countByBrandAndName(brand, name);
     }
 }
