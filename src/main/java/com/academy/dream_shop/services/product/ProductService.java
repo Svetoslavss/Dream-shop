@@ -10,11 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService implements IProductService {
 
     @Autowired
-    private final ProductRepository productRepository;
+    private ProductRepository productRepository;
 
 
     @Override
@@ -48,7 +47,7 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getProductByCategory(String category) {
-        return productRepository.findProductByCategory(category);
+        return null;
     }
 
     @Override
@@ -58,7 +57,7 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getProductByCategoryAndBrand(String category, String brand) {
-        return productRepository.findProductByCategoryAndBrand(category, brand);
+        return null;
     }
 
     @Override
