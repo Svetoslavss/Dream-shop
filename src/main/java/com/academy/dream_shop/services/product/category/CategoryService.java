@@ -53,7 +53,7 @@ public class CategoryService implements ICategoryService{
         }
 
 
-        return categoryRepository.save(category)
+        return categoryRepository.save(category);
     }
     
 
