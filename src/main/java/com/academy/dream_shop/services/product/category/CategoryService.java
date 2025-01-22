@@ -23,6 +23,9 @@ public class CategoryService implements ICategoryService{
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public Category addCategory(Category category) {
         return null;
@@ -63,8 +66,8 @@ public class CategoryService implements ICategoryService{
     public void deleteCategoryId(Long id) {
         categoryRepository.findById(id).ifPresentOrElse(categoryRepository::delete , () -> {
             throw new CategoryNotFound("Category does not exist");
-        } );
-        
+        });
+      
     }
 
     @Override
@@ -72,3 +75,4 @@ public class CategoryService implements ICategoryService{
         return categoryRepository.findAll();
     }
 }
+
