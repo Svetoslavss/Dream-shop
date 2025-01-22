@@ -5,11 +5,16 @@ import com.academy.dream_shop.models.Product;
 import com.academy.dream_shop.request.CategoryUpdateRequest;
 import com.academy.dream_shop.request.ProductRequest;
 
+import java.util.List;
+
 public interface ICategoryService {
 
+    Category addCategory(Category category);
     Category getCategoryById(Long id);
+    Category getCategoryByName(String categoryName);
     Category addProductInCategory(Category category, ProductRequest req);
-    void deleteCategoryId(Long id);
     Category updateCategory(CategoryUpdateRequest req , Long categoryId);
+    void deleteCategoryId(Long id);
+    List<Category> getAllCategories();
 
 }
