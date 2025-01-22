@@ -19,6 +19,8 @@ public class CategoryService implements ICategoryService{
 
     @Autowired
     private CategoryRepository categoryRepository;
+  
+    private ProductRepository productRepository;
 
     @Autowired
     private ProductRepository productRepository;
@@ -55,6 +57,7 @@ public class CategoryService implements ICategoryService{
             category.setProduct(req.getProduct());
         }
 
+
         return categoryRepository.save(category);
     }
     
@@ -64,7 +67,7 @@ public class CategoryService implements ICategoryService{
         categoryRepository.findById(id).ifPresentOrElse(categoryRepository::delete , () -> {
             throw new CategoryNotFound("Category does not exist");
         } );
-        
+
     }
 
     @Override
@@ -72,3 +75,4 @@ public class CategoryService implements ICategoryService{
         return categoryRepository.findAll();
     }
 }
+
