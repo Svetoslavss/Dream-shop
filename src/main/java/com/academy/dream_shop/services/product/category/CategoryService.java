@@ -17,7 +17,7 @@ import java.util.List;
 public class CategoryService implements ICategoryService{
 
     private CategoryRepository categoryRepository;
-    
+  
     private ProductRepository productRepository;
 
     @Override
@@ -52,9 +52,11 @@ public class CategoryService implements ICategoryService{
             category.setProduct(req.getProduct());
         }
 
+
         return categoryRepository.save(category)
     }
     
+
 
     @Override
     public void deleteCategoryId(Long id) {
@@ -62,6 +64,7 @@ public class CategoryService implements ICategoryService{
             throw new CategoryNotFound("Category does not exist");
         } );
         
+
     }
 
     @Override
@@ -69,3 +72,5 @@ public class CategoryService implements ICategoryService{
         return categoryRepository.findAll();
     }
 }
+
+
