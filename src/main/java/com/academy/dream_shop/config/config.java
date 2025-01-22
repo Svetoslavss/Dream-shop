@@ -33,5 +33,4 @@ public class config {
 
         return http.build();
     }
-
 }
