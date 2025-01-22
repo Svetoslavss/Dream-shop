@@ -1,10 +1,14 @@
 package com.academy.dream_shop.services.product.category;
 
 import com.academy.dream_shop.exceptions.CategoryNotFound;
+import com.academy.dream_shop.exceptions.ProductNotFoundException;
 import com.academy.dream_shop.models.Category;
+import com.academy.dream_shop.models.Product;
 import com.academy.dream_shop.repository.CategoryRepository;
+import com.academy.dream_shop.repository.ProductRepository;
 import com.academy.dream_shop.request.CategoryUpdateRequest;
 import com.academy.dream_shop.request.ProductRequest;
+import com.academy.dream_shop.services.product.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +17,8 @@ import java.util.List;
 public class CategoryService implements ICategoryService{
 
     private CategoryRepository categoryRepository;
+    
+    private ProductRepository productRepository;
 
     @Override
     public Category addCategory(Category category) {
@@ -37,16 +43,29 @@ public class CategoryService implements ICategoryService{
 
     @Override
     public Category updateCategory(CategoryUpdateRequest req, Long categoryId) {
-        return null;
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new CategoryNotFound("Category not found"));
+
+        category.setName(req.getName());
+
+        if(req.getProduct() != null){
+            category.setProduct(req.getProduct());
+        }
+
+        return categoryRepository.save(category)
     }
+    
 
     @Override
     public void deleteCategoryId(Long id) {
-
+        categoryRepository.findById(id).ifPresentOrElse(categoryRepository::delete , () -> {
+            throw new CategoryNotFound("Category does not exist");
+        } );
+        
     }
 
     @Override
     public List<Category> getAllCategories() {
-        return List.of();
+        return categoryRepository.findAll();
     }
 }
