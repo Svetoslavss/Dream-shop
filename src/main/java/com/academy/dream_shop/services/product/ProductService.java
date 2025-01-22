@@ -88,8 +88,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> getProductByCategory(String category) {
-        return null;
+    public List<Product> getProductByCategoryName(String categoryName) {
+        return productRepository.findProductByCategoryName(categoryName);
     }
 
     @Override
@@ -98,9 +98,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> getProductByCategoryAndBrand(String category, String brand) {
-        return null;
+    public List<Product> getProductByCategoryNameAndBrand(String categoryName, String brand) {
+        return productRepository.findProductByCategoryNameAndBrand(categoryName, brand);
     }
+
 
     @Override
     public List<Product> getProductByName(String name) {
