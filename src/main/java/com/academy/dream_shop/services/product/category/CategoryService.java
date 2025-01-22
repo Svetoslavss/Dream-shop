@@ -9,7 +9,6 @@ import com.academy.dream_shop.repository.ProductRepository;
 import com.academy.dream_shop.request.CategoryUpdateRequest;
 import com.academy.dream_shop.request.ProductRequest;
 import com.academy.dream_shop.services.product.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,10 +16,8 @@ import java.util.List;
 @Service
 public class CategoryService implements ICategoryService{
 
-    @Autowired
     private CategoryRepository categoryRepository;
-
-    @Autowired
+  
     private ProductRepository productRepository;
 
     @Override
@@ -55,8 +52,10 @@ public class CategoryService implements ICategoryService{
             category.setProduct(req.getProduct());
         }
 
-        return categoryRepository.save(category);
+
+        return categoryRepository.save(category)
     }
+    
 
 
     @Override
@@ -64,6 +63,7 @@ public class CategoryService implements ICategoryService{
         categoryRepository.findById(id).ifPresentOrElse(categoryRepository::delete , () -> {
             throw new CategoryNotFound("Category does not exist");
         } );
+        
 
     }
 
@@ -72,3 +72,5 @@ public class CategoryService implements ICategoryService{
         return categoryRepository.findAll();
     }
 }
+
+
