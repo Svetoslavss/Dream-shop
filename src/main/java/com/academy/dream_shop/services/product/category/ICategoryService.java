@@ -12,5 +12,4 @@ public interface ICategoryService {
     void deleteCategoryId(Long id);
     Category updateCategory(CategoryUpdateRequest req , Long categoryId);
 
-
 }
