@@ -1,15 +1,17 @@
 package com.academy.dream_shop.services.product;
 
 import com.academy.dream_shop.models.Product;
+import com.academy.dream_shop.request.ProductRequest;
+import com.academy.dream_shop.request.ProductUpdateRequest;
 
 import java.util.List;
 
 public interface IProductService {
 
-    Product addProduct(Product product);
+    Product addProduct(ProductRequest req);
     Product getProductById(Long id);
     void deleteProductById(Long id);
-    void updateProduct(Product product, Long id);
+    Product updateProduct(ProductUpdateRequest req, Long id);
     List<Product> getAllProducts();
     List<Product> getProductByCategory(String category);
     List<Product> getProductByBrand(String brand);
