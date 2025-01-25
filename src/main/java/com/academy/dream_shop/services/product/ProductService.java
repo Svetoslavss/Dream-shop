@@ -1,12 +1,14 @@
 package com.academy.dream_shop.services.product;
 
 import com.academy.dream_shop.exceptions.ProductNotFoundException;
+import com.academy.dream_shop.exceptions.ResourceNotFound;
 import com.academy.dream_shop.models.Category;
 import com.academy.dream_shop.models.Product;
 import com.academy.dream_shop.repository.CategoryRepository;
 import com.academy.dream_shop.repository.ProductRepository;
 import com.academy.dream_shop.request.ProductRequest;
 import com.academy.dream_shop.request.ProductUpdateRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
