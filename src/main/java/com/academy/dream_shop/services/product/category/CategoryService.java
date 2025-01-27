@@ -8,6 +8,7 @@ import com.academy.dream_shop.repository.CategoryRepository;
 import com.academy.dream_shop.repository.ProductRepository;
 import com.academy.dream_shop.request.CategoryUpdateRequest;
 import com.academy.dream_shop.request.ProductRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +17,8 @@ import java.util.Optional;
 @Service
 public class CategoryService implements ICategoryService{
 
+    @Autowired
     private CategoryRepository categoryRepository;
-  
-    private ProductRepository productRepository;
 
     @Override
     public Category addCategory(Category category) {
